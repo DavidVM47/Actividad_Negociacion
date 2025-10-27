@@ -21,4 +21,8 @@ public class ClienteEntity {
     private String direccion;
     private Integer telefono;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
+    private CiudadEntity ciudad;
 }

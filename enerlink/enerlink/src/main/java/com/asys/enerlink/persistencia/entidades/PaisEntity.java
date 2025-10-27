@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-    @Entity
+import java.util.List;
+
+@Entity
     @Table(name = "Pais")
     @Getter
     @Setter
@@ -14,8 +16,11 @@ import lombok.Setter;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id pais")
+        @Column(name = "id_pais")
         private long id;
 
         private String nombre;
+
+        @OneToMany (mappedBy = "pais")
+        private List<DepartamentoEntity> departamento;
 }
