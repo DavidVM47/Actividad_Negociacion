@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -23,5 +24,11 @@ import java.util.Date;
         private Date fechaInstalacion;
         private Integer capacidad;
         private String estado;
+
+    @OneToMany(mappedBy = "plantasSolares")
+    private List<PanelesSolaresEntity> panelesSolares;
+
+    @OneToMany(mappedBy = "planta")
+    private List<ProductosEntity> productos;
 
     }

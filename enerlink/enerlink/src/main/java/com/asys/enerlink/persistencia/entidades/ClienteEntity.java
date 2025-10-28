@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.yaml.snakeyaml.tokens.AliasToken;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Clientes")
@@ -22,7 +25,22 @@ public class ClienteEntity {
     private Integer telefono;
     private String email;
 
+
+
+    @OneToMany
+    private List<ContratosEntity> contratos;
+
     @ManyToOne
     @JoinColumn(name = "id_ciudad")
     private CiudadEntity ciudad;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<ContratosEntity> contrato;
+
+    @ManyToMany
+    @JoinTable(name = "ventas_clientes",
+    joinColumns = @JoinColumn(name = "id_cliente"),
+    inverseJoinColumns = @JoinColumn(name = "id_venta"))
+    private List<VentasEntity> ventas;
+
 }

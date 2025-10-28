@@ -17,12 +17,16 @@ import java.util.Date;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id paneles_solares")
+        @Column(name = "id_paneles_solares")
         private long id;
 
         private String modelo;
         private String estado;
         private Integer poteciaNominal;
         private Date fechaInstalacion;
+
+        @ManyToOne
+        @JoinColumn(name = "id_planta")
+        private PlantasSolaresEntity plantasSolares;
 
     }
